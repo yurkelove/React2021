@@ -531,14 +531,9 @@ input[type=submit].github {
   margin-top: 10px; }
 
 .restaurant-select .arrow-picker {
-  display: inline-block;
-  vertical-align: middle;
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  padding-top: 2px;
-  width: 14px; }
+  top: 30%;
+  right: 20px; }
 
 .restaurant-select .arrow-picker__up {
   background: url("images/up.svg") no-repeat;
