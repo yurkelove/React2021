@@ -251,6 +251,39 @@ h3 {
     background: #ededed;
     padding: 2rem; }
 
+.app-burger-form {
+  margin-bottom: 20px;
+  border: 2px solid #000;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 450px; }
+  .app-burger-form input, .app-burger-form textarea, .app-burger-form select {
+    width: 50%;
+    padding: 10px;
+    line-height: 1;
+    font-size: 1.2rem;
+    border: 0;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    appearance: none;
+    border-radius: 0;
+    background: #fff; }
+    .app-burger-form input:focus, .app-burger-form textarea:focus, .app-burger-form select:focus {
+      outline: 0;
+      background: #fff2d9; }
+  .app-burger-form textarea {
+    width: 100%;
+    min-height: 60px; }
+  .app-burger-form input:last-of-type {
+    width: 100%; }
+  .app-burger-form button {
+    width: 100%;
+    border: 0;
+    font-size: 1.2rem; }
+  .app-burger-form .app-burger-form-status {
+    width: 100%; }
+
 ul {
   list-style: none;
   margin: 0;
@@ -314,49 +347,6 @@ ul.order li span.count span {
 .order-title {
   text-align: center; }
 
-.burger-edit {
-  margin-bottom: 20px;
-  border: 2px solid #000;
-  overflow: hidden;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 450px; }
-
-.burger-edit input,
-.burger-edit textarea,
-.burger-edit select {
-  width: 50%;
-  padding: 10px;
-  line-height: 1;
-  font-size: 1.2rem;
-  border: 0;
-  border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
-  appearance: none;
-  border-radius: 0;
-  background: #fff; }
-
-.burger-edit input:focus,
-.burger-edit textarea:focus,
-.burger-edit select:focus {
-  outline: 0;
-  background: #fff2d9; }
-
-.burger-edit textarea {
-  width: 100%;
-  min-height: 60px; }
-
-.burger-edit input:last-of-type {
-  width: 100%; }
-
-.burger-edit button {
-  width: 100%;
-  border: 0;
-  font-size: 1.2rem; }
-
-.burger-edit .status {
-  width: 100%; }
-
 .menu-burger {
   display: grid;
   grid-template-columns: 150px 1fr;
@@ -366,26 +356,22 @@ ul.order li span.count span {
   background: #fff;
   padding: 2rem;
   border-radius: 4px; }
-
-.menu-burger p {
-  margin: 5px 0;
-  font-size: 1.6rem; }
-
-.menu-burger .burger-name {
-  margin: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-
-.menu-burger .price {
-  font-size: 1.4rem;
-  justify-content: flex-end;
-  font-family: 'Open Sans', sans-serif; }
-
-.menu-burger img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; }
+  .menu-burger p {
+    margin: 5px 0;
+    font-size: 1.6rem; }
+  .menu-burger .menu-burger-defails-name {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+  .menu-burger .price {
+    font-size: 1.4rem;
+    justify-content: flex-end;
+    font-family: 'Open Sans', sans-serif; }
+  .menu-burger img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 
 .buttonOrder {
   transform: skew(-2deg); }
