@@ -195,49 +195,41 @@ h2 {
 h3 {
   font-size: 2rem; }
 
-header.top {
+.app-header {
   background: url("images/burger-logo-4.jpg") center no-repeat;
   background-size: cover;
   color: #fff; }
+  .app-header__container {
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgba(61, 26, 22, 0), rgba(61, 26, 22, 0.6)); }
+    .app-header__container .app-header-content {
+      padding: 4rem 0;
+      margin: 0 4rem; }
+      .app-header__container .app-header-content h1 {
+        font-size: 3.4rem; }
+      .app-header__container .app-header-content h3 {
+        margin: 0;
+        font-size: 2rem; }
+      .app-header__container .app-header-content .app-sub-header {
+        color: #f00; }
+      .app-header__container .app-header-content__rating {
+        padding: 4px 8px;
+        background-color: #ffe033;
+        display: inline-flex;
+        border-radius: 18px;
+        align-items: center;
+        font-size: 1.4rem; }
+        .app-header__container .app-header-content__rating .app-header-rating-tag {
+          color: #000;
+          margin-right: 5px; }
+      .app-header__container .app-header-content .app-header-divider {
+        height: 1px;
+        opacity: 0.2;
+        margin-top: 20px;
+        margin-bottom: 8px;
+        background-color: #fff; }
 
-header.top .wrap {
-  height: 100%;
-  background-image: linear-gradient(to bottom, rgba(61, 26, 22, 0), rgba(61, 26, 22, 0.6)); }
-
-header.top .header-content {
-  padding: 4rem 0;
-  margin: 0 4rem; }
-
-header.top .header-content .header-rating {
-  padding: 4px 8px;
-  background-color: #ffe033;
-  display: inline-flex;
-  border-radius: 18px;
-  align-items: center;
-  font-size: 1.4rem; }
-
-header.top .header-content .header-rating .header-rating_tag {
-  color: #000;
-  margin-right: 5px; }
-
-header.top .header-content .header-divider {
-  height: 1px;
-  opacity: 0.2;
-  margin-top: 20px;
-  margin-bottom: 8px;
-  background-color: #fff; }
-
-header.top .header-content h1 {
-  font-size: 3.4rem; }
-
-header.top .header-content h3 {
-  margin: 0;
-  font-size: 2rem; }
-
-header.top .header-content .sub-header {
-  color: #f00; }
-
-.burger-paradise {
+.app-burger-menu {
   display: grid;
   grid-template-columns: 2fr 1fr 1.5fr;
   grid-gap: 10px;
@@ -245,24 +237,19 @@ header.top .header-content .sub-header {
   max-width: 1500px;
   margin: 0 auto;
   margin-top: 2vh; }
-
-.burger-paradise > * {
-  overflow-y: scroll;
-  overflow-x: hidden;
-  border: solid 1px #eee; }
-
-.burger-paradise > *:first-child {
-  background: #ededed; }
-
-.burger-paradise > *:nth-child(2) {
-  padding: 2rem 0;
-  overflow-y: hidden;
-  background: #f2f2f2;
-  border-radius: 4px; }
-
-.burger-paradise > *:last-child {
-  background: #ededed;
-  padding: 2rem; }
+  .app-burger-menu__menu {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: solid 1px #eee;
+    background: #ededed; }
+  .app-burger-menu .app-order {
+    padding: 2rem 0;
+    overflow-y: hidden;
+    background: #f2f2f2;
+    border-radius: 4px; }
+  .app-burger-menu .app-menu-admin {
+    background: #ededed;
+    padding: 2rem; }
 
 ul {
   list-style: none;
