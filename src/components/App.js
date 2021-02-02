@@ -15,6 +15,13 @@ class App extends React.Component {
 
     componentDidMount() {
         const { params } = this.props.match;
+
+        const localStorageRef = localStorage.getItem(params.restaurantId);
+        
+        if(localStorageRef) {
+            this.setState({order: JSON.parse(localStorageRef)});
+        }
+       
         this.ref = base.syncState(`${params.restaurantId}/burgers`, {
             context: this,
             state: 'burgers' // state обьект
@@ -23,6 +30,12 @@ class App extends React.Component {
 
     componentWillUnmount() {
         base.removeBinding(this.ref);
+    }
+
+    componentDidUpdate() {
+        const { params } = this.props.match;
+
+        localStorage.setItem(params.restaurantId, JSON.stringify(this.state.order));
     }
 
     addBurger = (burger) => {
@@ -34,6 +47,23 @@ class App extends React.Component {
         this.setState({burgers})
     }
 
+
+    updateBurger = (key, updated) => {
+        const burgers = {...this.state.burgers};
+
+        burgers[key] = updated;
+
+        this.setState({burgers})
+    }
+
+    deleteBurger = key => {
+        const burgers = {...this.state.burgers};
+        
+        burgers[key] = null;
+
+        this.setState({burgers})
+    }
+
     loadSampleBurgers = () => {
        this.setState({burgers: sampleBurgers})
     }
@@ -42,6 +72,15 @@ class App extends React.Component {
         const order = {...this.state.order};
         // Если существует то добавляем 1, либо обновить текущее значение
         order[key] = order[key] + 1 || 1;
+        this.setState({order});
+    }
+
+
+    deleteFromOrder = (key) => {
+        const order = {...this.state.order};
+        
+        delete order[key];
+
         this.setState({order});
     }
 
@@ -58,8 +97,13 @@ class App extends React.Component {
                         })}
                     </ul>
                 </div>
-                <Order burgers={this.state.burgers} order={this.state.order}/>
-                <MenuAdmin addBurger={this.addBurger} loadSampleBurgers={this.loadSampleBurgers}/>
+                <Order burgers={this.state.burgers} order={this.state.order} deleteFromOrder={this.deleteFromOrder}/>
+                <MenuAdmin addBurger={this.addBurger} 
+                            loadSampleBurgers={this.loadSampleBurgers} 
+                            burgers={this.state.burgers} 
+                            updateBurger={this.updateBurger}
+                            deleteBurger={this.deleteBurger}
+                />
             </div>
         )
     }

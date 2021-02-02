@@ -5,18 +5,15 @@ import Shipment from './Shipment';
 
 class Order extends React.Component {
 
-    deleteBurgers = (key) => {
-        // const burger = this.props.burgers[key];
-        // if(burger.name === key) {
-            
-        // }
-    }
 
     renderOrder = (key) => {
         const burger = this.props.burgers[key];
         const count = this.props.order[key];
 
         const isAvailable = burger && burger.status === 'available';
+
+        if(!burger) return null;
+        
         if(!isAvailable) {
             return <li className="unavailable" key={key}>
                 Извините, {burger ? burger.name : 'бургер'} временно не доступен!
@@ -27,8 +24,8 @@ class Order extends React.Component {
                 <li key={key}>
                     <span>
                         <span>{count}</span>шт. {burger.name}
-                        <span>{count * burger.price} $</span>
-                        <button className="cancellItem" onClick={() => this.deleteBurgers(burger.name)}>&times;</button>
+                        <span> {count * burger.price} $</span>
+                        <button className="cancellItem" onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
                     </span>
                 </li>
         )
