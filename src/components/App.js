@@ -13,11 +13,13 @@ class App extends React.Component {
     static propTypes = {
         match: PropTypes.object
     }
-    
+
     state = {
         burgers: {},
         order: {}
     }
+
+    
 
     componentDidMount() {
         const { params } = this.props.match;
