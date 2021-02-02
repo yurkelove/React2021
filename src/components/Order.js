@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Shipment from './Shipment';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
 class Order extends React.Component {
@@ -12,22 +13,39 @@ class Order extends React.Component {
 
         const isAvailable = burger && burger.status === 'available';
 
+        const transitionOptions = {
+            classNames: 'app-order-list',
+            key: key,
+            timeout: {enter: 500, exit: 500}
+        }
+
         if(!burger) return null;
         
         if(!isAvailable) {
-            return <li className="unavailable" key={key}>
-                Извините, {burger ? burger.name : 'бургер'} временно не доступен!
-            </li>
+            return (
+                <CSSTransition {...transitionOptions}>
+                    <li className="unavailable" key={key}>
+                        Извините, {burger ? burger.name : 'бургер'} временно не доступен!
+                    </li>
+                </CSSTransition>
+            )
         }
         
         return (
+            <CSSTransition {...transitionOptions}>
                 <li key={key}>
                     <span>
-                        <span>{count}</span>шт. {burger.name}
+                        <TransitionGroup component="span" className="count">
+                            <CSSTransition classNames="count" key={count} timeout={{enter: 5000, exit: 5000}}>
+                            <span>{count}</span>
+                            </CSSTransition>
+                        </TransitionGroup>
+                        шт. {burger.name}
                         <span> {count * burger.price} $</span>
                         <button className="cancellItem" onClick={() => this.props.deleteFromOrder(key)}>&times;</button>
                     </span>
                 </li>
+            </CSSTransition>
         )
        
     }
@@ -52,9 +70,9 @@ class Order extends React.Component {
         return(
             <div className="app-order">
                 <h2>Ваш заказ</h2>
-                <ul className="order">
+                <TransitionGroup component="ul" className="app-order-list">
                     {orderIds.map(this.renderOrder)}
-                </ul>
+                </TransitionGroup>
                 {total > 0 ? (<Shipment total={total}/> ) : (<div className="nothingSelected">
                     Выберите блюда и добавьте к заказу
                 </div>)}
